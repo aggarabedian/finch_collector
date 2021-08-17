@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, DetailView, CreateView, UpdateView
 from .models import Record
 
 # Create your views here.
@@ -26,3 +26,20 @@ class Records(TemplateView):
       context["records"] = Record.objects.all()
       context["header"] = "All Albums"
     return context
+
+class RecordCreate(CreateView):
+  model = Record
+  fields = ["title", "img", "artist", "year"]
+  template_name = "record_create.html"
+  success_url = "/records/"
+
+class RecordDetail(DetailView):
+  model = Record
+  template_name = "record_detail.html"
+
+
+class RecordUpdate(UpdateView):
+  model = Record
+  fields = ["title", "img", "artist", "year"]
+  template_name = "record_update.html"
+  success_url = "/records/"

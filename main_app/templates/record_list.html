@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>Records Record</h1>
-
+<a href="{% url "record_create" %}">Add Record</a>
 <form class="search_bar" method="get">
   <div>
   <input class="input" type="text" name="title" placeholder="title">
@@ -22,7 +22,9 @@
       <p>
       {{record.artist}}
       {{record.year}}  
-      <img src="{{record.img}}" alt="{{record.title}}">
+        <a href="{% url "record_detail" record.pk %}">
+        <img src="{{record.img}}" alt="{{record.title}}">
+        </a>
       </p>
     </div>
     {% endfor %}
