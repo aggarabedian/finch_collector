@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Records{% endblock %}
+{% block title %}{{header}}{% endblock %}
 
 {% block content %}
 
 <h1>Records Record</h1>
 
 <form class="search_bar" method="get">
+  <div>
   <input class="input" type="text" name="title" placeholder="title">
   <input type="submit" value="Search">
+  </div>
+  <a href="{% url "record_list" %}">Clear Search</a>
 </form>
+
 <div class="all_records">
   <h2>All Records</h2>
     {% for record in records %}

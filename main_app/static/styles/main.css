@@ -21,6 +21,8 @@ body {
 
 .record_card {
   border: 3px solid black;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 img {

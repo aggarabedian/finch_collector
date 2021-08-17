@@ -17,5 +17,12 @@ class Records(TemplateView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context["records"] = Record.objects.all()
+    title = self.request.GET.get("title")
+
+    if title != None:
+      context["records"] = Record.objects.filter(title__icontains=title)
+      context["header"] = f"Searching for {title}"
+    else:
+      context["records"] = Record.objects.all()
+      context["header"] = "All Albums"
     return context
