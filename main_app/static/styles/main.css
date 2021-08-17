@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F6F5F5;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.all_records {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  height: 200px;
+  width: auto;
+}

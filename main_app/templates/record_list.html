@@ -5,6 +5,22 @@
 {% block content %}
 
 <h1>Records Record</h1>
-<p>Record Index</p>
+
+<form method="get">
+  <input class="input" type="text" name="title" placeholder="title">
+  <input type="submit" value="Search">
+</form>
+<div class="all_records">
+  <h2>All Records</h2>
+  {% for record in records %}
+  <p>
+  {{record.title}}
+  {{record.artist}}
+  {{record.year}}  
+  <img src="{{record.img}}" alt="{{record.title}}">
+  </p>
+  {% endfor %}
+
+</div>
 
 {% endblock %}
