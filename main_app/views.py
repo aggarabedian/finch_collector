@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
-from django.views.generic import TemplateView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Record
+from django.urls import reverse
 
 # Create your views here.
 
@@ -31,7 +32,9 @@ class RecordCreate(CreateView):
   model = Record
   fields = ["title", "img", "artist", "year"]
   template_name = "record_create.html"
-  success_url = "/records/"
+  
+  def get_success_url(self):
+    return reverse("record_detail", kwargs={'pk': self.object.pk})
 
 class RecordDetail(DetailView):
   model = Record
@@ -42,4 +45,11 @@ class RecordUpdate(UpdateView):
   model = Record
   fields = ["title", "img", "artist", "year"]
   template_name = "record_update.html"
+  
+  def get_success_url(self):
+    return reverse("record_detail", kwargs={'pk': self.object.pk})
+
+class RecordDelete(DeleteView):
+  model = Record
+  template_name = "record_delete_confirmation.html"
   success_url = "/records/"

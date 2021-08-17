@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Confirmation{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete {{record.title}}?</h1>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Yes, please delete this record.">
+  <a href="{% url "record_detail" record.pk %}">Cancel</a>
+</form>
+
+
+{% endblock %}
